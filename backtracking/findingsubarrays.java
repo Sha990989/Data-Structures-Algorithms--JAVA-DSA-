@@ -1,0 +1,37 @@
+package backtracking;
+/*{1,2,3}
+{1,3,2}
+{2,1,3}
+{2,3,1}
+{3,1,2}
+{3,2,1}
+ */
+
+public class findingsubarrays {   //using recursion and backtracing
+    public static void subArrays(int[] arr, int index) {
+        if (index == arr.length) {
+            for(int num:arr){
+                System.out.print(num+" ");
+            }
+            System.out.println();
+            return;
+        }
+        for(int j=index;j<arr.length;j++){
+          int temp=arr[index]; //swapping here to change values of array
+          arr[index]=arr[j];
+          arr[j]=temp;
+
+          subArrays(arr,index+1);
+
+          temp=arr[index]; //again returning here
+          arr[index]=arr[j];
+          arr[j]=temp;
+        }
+        
+    }
+    public static void main(String[] args) {
+        int[] arr={1,2,3};
+        subArrays(arr,0);
+    }
+
+}
